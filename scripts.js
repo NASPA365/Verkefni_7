@@ -129,7 +129,6 @@ function palindrome(str) {
     const reversed = text.split("").reverse().join("");
 
     return reversed === text;
-
   } 
 }
 console.assert(
@@ -143,11 +142,11 @@ console.assert(
 
 function vowels(str) {
   if (isString(str)) {
-    let vowel = "A,a,Á,á,E,e,É,é,I,i,O,o,Ó,ó,U,u,Ú,ú,Y,y,Ý,ý,Æ,æ";
     let count = 0;
+    const text = str.toLowerCase("");
 
-    for (const char of str) {
-      if (vowel.includes(char)) {
+    for (const char of text) {
+      if (VOWELS.includes(char)) {
         count++;
       }
     }
@@ -162,14 +161,13 @@ console.assert(
 );
 console.assert(vowels(false) == 0, "vowel: ef ekki stengur, skila int 0");
 
-function consonants(str) {
+function consonant(str) {
   if (isString(str)) {
-    let consonants =
-      "B,b,D,d,Ð,ð,F,f,G,g,H,h,J,j,K,k,L,l,M,m,N,n,P,p,R,r,S,s,T,t,V,v,X,x,Þ,þ";
     let count = 0;
+    const text = str.toLowerCase("");
 
-    for (const char of str) {
-      if (consonants.includes(char)) {
+    for (const char of text) {
+      if (CONSONANTS.includes(char)) {
         count++;
       }
     }
@@ -179,18 +177,45 @@ function consonants(str) {
   }
 }
 console.assert(
-  //ég er með c í nafninu mínu þannig að það telst ekki með sem samhljóði né sérhljóði :(
-  consonants("ignas PACEVICIUS") == 6,
-  "consonants: tekur inn texta með bæði stóra og litla stafi sem skilar int margar íslenska samhljóða"
+  consonant("ignas PACEVICIUS") == 8,
+  "consonant: tekur inn texta með bæði stóra og litla stafi sem skilar int margar íslenska samhljóða"
 );
 console.assert(
-  consonants(false) == 0,
-  "consonants: ef ekki stengur, skila int 0"
+  consonant(false) == 0,
+  "consonant: ef ekki stengur, skila int 0"
 );
 
 //------------------------------------------------------------------------------
 // Leiðbeint ferli
 
 function start() {
-  // Útfæra
+  const input = prompt(
+    "Sláðu inn streng með nokkrum orðum til að fá upplýsingar um:\n" +
+    "- Lengsta orðið.\n" +
+    "- Stysta orðið.\n" +
+    "- Strenginn snúið við.\n" +
+    "- Fjölda sérhljóða í streng.\n" +
+    "- Fjölda samhljóða í streng.\n" +
+    "- Hvort strengurinn er samhverfur.");
 }
+
+
+/**
+ *  Sláðu inn streng með nokkrum orðum til að fá upplýsingar um:
+ * - Lengsta orðið.
+ * - Stysta orðið.
+ * - Strenginn snúið við.
+ * - Fjölda sérhljóða í streng.
+ * - Fjölda samhljóða í streng.
+ * - Hvort strengurinn er samhverfur.
+ * 
+ * Viltu prófa aftur?
+ * 
+ *                                      SVAR
+ * Lengsta orðið er: ""
+ * Stysta orðið er: ""
+ * Strengurinn snúinn við: ""
+ * Fjöldi sérhljóða í streng: ""
+ * Fjöldi samhljóða í streng: ""
+ * Strengurinn er samhverfur. || Strengurinn er ekki samhverfur.
+ */
