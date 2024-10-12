@@ -54,16 +54,14 @@ function longest(str) {
 
     let longest = split[0];
 
-
-    for (const word of split) {      
+    for (const word of split) {
       if (word.length > longest.length) {
         longest = word;
       }
     }
 
     return longest;
-  } 
-  else {
+  } else {
     return null;
   }
 }
@@ -78,23 +76,21 @@ console.assert(
 
 function shortest(str) {
   if (isString(str)) {
-    const split = str.split(' ');
+    const split = str.split(" ");
 
     let shortest = split[0];
 
-    for (const word of split) {      
+    for (const word of split) {
       if (word.length < shortest.length) {
         shortest = word;
       }
     }
 
     return shortest;
-  } 
-  else {
+  } else {
     return null;
   }
 }
-
 console.assert(
   shortest("Ignas Pacevicius") === "Ignas",
   "shortest: finnur stysta orðið"
@@ -128,12 +124,47 @@ function palindrome(str) {
 }
 
 function vowels(str) {
-  // Útfæra
+  if (isString(str)) {
+    let vowel = "A,a,Á,á,E,e,É,é,I,i,O,o,Ó,ó,U,u,Ú,ú,Y,y,Ý,ý,Æ,æ";
+    let count = 0;
+
+    for (const char of str) {
+      if (vowel.includes(char)) {
+        count++;
+      }
+    }
+    return count;
+  } else {
+    return 0;
+  }
 }
+console.assert(
+  vowels("ignas PACEVICIUS") == 7,
+  "vowels: tekur inn texta með bæði stóra og litla stafi sem skilar int margar íslenska sérhjlóða"
+);
+console.assert(vowels(false) == 0, "vowel: ef ekki stengur, skila int 0");
 
 function consonants(str) {
-  // Útfæra
+  if (isString(str)) {
+    let consonants = "B,b,D,d,Ð,ð,F,f,G,g,H,h,J,j,K,k,L,l,M,m,N,n,P,p,R,r,S,s,T,t,V,v,X,x,Þ,þ";
+    let count = 0;
+
+    for (const char of str) {
+      if (consonants.includes(char)) {
+        count++;
+      }
+    }
+    return count;
+  } else {
+    return 0;
+  }
 }
+console.assert(
+  //ég er með c í nafninu mínu þannig að það telst ekki með sem samhljóði né sérhljóði :(
+  consonants("ignas PACEVICIUS") == 6,
+  "consonants: tekur inn texta með bæði stóra og litla stafi sem skilar int margar íslenska samhljóða"
+);
+console.assert(consonants(false) == 0, "consonants: ef ekki stengur, skila int 0");
 
 //------------------------------------------------------------------------------
 // Leiðbeint ferli
