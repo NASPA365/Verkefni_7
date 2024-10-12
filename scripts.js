@@ -49,8 +49,32 @@ function split(str, separator = " ") {
 // Grunnföll sem skilgreina á
 
 function longest(str) {
-  // Útfæra
+  if (isString(str)) {
+    const split = str.split(" ");
+
+    let longest = '';
+
+
+    for (const word of split) {      
+      if (word.length > longest.length) {
+        longest = word;
+      }
+    }
+
+    return longest;
+  } 
+  else {
+    return null;
+  }
 }
+console.assert(
+  longest("Ignas Pacevicius") === "Pacevicius",
+  "longest: finnur lengsta orðið"
+);
+console.assert(
+  longest(false) === null,
+  "reverse: ef ekki strengur, skila null"
+);
 
 function shortest(str) {
   // Útfæra
@@ -58,13 +82,11 @@ function shortest(str) {
 
 function reverse(str) {
   if (isString(str)) {
-    const split = str.split('');
+    const split = str.split("");
     const reversed = split.reverse();
 
-
-    return reversed.join('');
-  }
-  else {
+    return reversed.join("");
+  } else {
     return null;
   }
 }
