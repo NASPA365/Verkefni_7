@@ -111,7 +111,7 @@ function reverse(str) {
   }
 }
 console.assert(
-  reverse("halló") === "óllah",
+  reverse("halló heimur") === "rumieh óllah",
   "reverse: snýr við einföldum streng"
 );
 console.assert(
@@ -120,8 +120,26 @@ console.assert(
 );
 
 function palindrome(str) {
-  // Útfæra
+  if (!isString(str) || str === '') {
+    return false;
+  }
+  else{
+    const text = str.toLowerCase();
+
+    const reversed = text.split("").reverse().join("");
+
+    return reversed === text;
+
+  } 
 }
+console.assert(
+  palindrome('civic') == true,
+  "palindrome: þegar það er skrifað orð sem er eins þegar það er snúið því við, skila int 1"
+);
+console.assert(
+  palindrome('Civic') == true,
+  "palindrome: skiptir ekki máli ef það er stór eða lítill stafur"
+);
 
 function vowels(str) {
   if (isString(str)) {
@@ -146,7 +164,8 @@ console.assert(vowels(false) == 0, "vowel: ef ekki stengur, skila int 0");
 
 function consonants(str) {
   if (isString(str)) {
-    let consonants = "B,b,D,d,Ð,ð,F,f,G,g,H,h,J,j,K,k,L,l,M,m,N,n,P,p,R,r,S,s,T,t,V,v,X,x,Þ,þ";
+    let consonants =
+      "B,b,D,d,Ð,ð,F,f,G,g,H,h,J,j,K,k,L,l,M,m,N,n,P,p,R,r,S,s,T,t,V,v,X,x,Þ,þ";
     let count = 0;
 
     for (const char of str) {
@@ -164,7 +183,10 @@ console.assert(
   consonants("ignas PACEVICIUS") == 6,
   "consonants: tekur inn texta með bæði stóra og litla stafi sem skilar int margar íslenska samhljóða"
 );
-console.assert(consonants(false) == 0, "consonants: ef ekki stengur, skila int 0");
+console.assert(
+  consonants(false) == 0,
+  "consonants: ef ekki stengur, skila int 0"
+);
 
 //------------------------------------------------------------------------------
 // Leiðbeint ferli
