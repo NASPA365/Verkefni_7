@@ -52,7 +52,7 @@ function longest(str) {
   if (isString(str)) {
     const split = str.split(" ");
 
-    let longest = '';
+    let longest = split[0];
 
 
     for (const word of split) {      
@@ -77,8 +77,32 @@ console.assert(
 );
 
 function shortest(str) {
-  // Útfæra
+  if (isString(str)) {
+    const split = str.split(' ');
+
+    let shortest = split[0];
+
+    for (const word of split) {      
+      if (word.length < shortest.length) {
+        shortest = word;
+      }
+    }
+
+    return shortest;
+  } 
+  else {
+    return null;
+  }
 }
+
+console.assert(
+  shortest("Ignas Pacevicius") === "Ignas",
+  "shortest: finnur stysta orðið"
+);
+console.assert(
+  longest(false) === null,
+  "reverse: ef ekki strengur, skila null"
+);
 
 function reverse(str) {
   if (isString(str)) {
