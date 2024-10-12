@@ -9,10 +9,10 @@
 // Fastar
 
 /** Íslenskir sérhljóðar */
-const CONSONANTS = 'bcdfghjklmnpqrstvwxz'.split('');
+const CONSONANTS = "bcdfghjklmnpqrstvwxz".split("");
 
 /** Íslenskir samhljóðar */
-const VOWELS = 'aeiouyáéýúíóöæ'.split('');
+const VOWELS = "aeiouyáéýúíóöæ".split("");
 
 //------------------------------------------------------------------------------
 // Hjálparföll
@@ -23,12 +23,12 @@ const VOWELS = 'aeiouyáéýúíóöæ'.split('');
  * @returns `true` ef `str` er strengur, annars `false`.
  */
 // Skilgreinum anonymous fall og bindum við breytuna `isString`
-const isString = (str) => typeof str === 'string';
+const isString = (str) => typeof str === "string";
 
 // Prófum fallið
-console.assert(isString('hi') === true, 'isString: skilar `true` fyrir streng');
-console.assert(isString(42) === false, 'isString: skilar `false` fyrir tölu');
-console.assert(isString(null) === false, 'isString: skilar `false` fyrir null');
+console.assert(isString("hi") === true, "isString: skilar `true` fyrir streng");
+console.assert(isString(42) === false, "isString: skilar `false` fyrir tölu");
+console.assert(isString(null) === false, "isString: skilar `false` fyrir null");
 
 /**
  * Öruggt fall sem skilar fylki af strengjum úr gefnum streng, skipt upp með
@@ -37,7 +37,7 @@ console.assert(isString(null) === false, 'isString: skilar `false` fyrir null');
  * @returns {string[]} Fylki af strengjum eða tóma fylkið ef afmarkari kom
  * ekki fram.
  */
-function split(str, separator = ' ') {
+function split(str, separator = " ") {
   if (!isString(str)) {
     return [];
   }
@@ -57,8 +57,25 @@ function shortest(str) {
 }
 
 function reverse(str) {
-  // Útfæra
+  if (isString(str)) {
+    const split = str.split('');
+    const reversed = split.reverse();
+
+
+    return reversed.join('');
+  }
+  else {
+    return null;
+  }
 }
+console.assert(
+  reverse("halló") === "óllah",
+  "reverse: snýr við einföldum streng"
+);
+console.assert(
+  reverse(false) === null,
+  "reverse: ef ekki strengur, skila null"
+);
 
 function palindrome(str) {
   // Útfæra
