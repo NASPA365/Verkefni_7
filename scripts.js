@@ -189,33 +189,65 @@ console.assert(
 // Leiðbeint ferli
 
 function start() {
-  const input = prompt(
-    "Sláðu inn streng með nokkrum orðum til að fá upplýsingar um:\n" +
+  alert("Sláðu inn streng með nokkrum orðum til að fá upplýsingar um:\n" +
     "- Lengsta orðið.\n" +
     "- Stysta orðið.\n" +
     "- Strenginn snúið við.\n" +
     "- Fjölda sérhljóða í streng.\n" +
     "- Fjölda samhljóða í streng.\n" +
-    "- Hvort strengurinn er samhverfur.");
-}
+    "- Hvort strengurinn er samhverfur."
+  );
+
+  const str = prompt("Sláðu inn streng:");
 
 
-/**
- *  Sláðu inn streng með nokkrum orðum til að fá upplýsingar um:
- * - Lengsta orðið.
- * - Stysta orðið.
- * - Strenginn snúið við.
- * - Fjölda sérhljóða í streng.
- * - Fjölda samhljóða í streng.
- * - Hvort strengurinn er samhverfur.
- * 
- * Viltu prófa aftur?
- * 
- *                                      SVAR
- * Lengsta orðið er: ""
- * Stysta orðið er: ""
- * Strengurinn snúinn við: ""
- * Fjöldi sérhljóða í streng: ""
- * Fjöldi samhljóða í streng: ""
- * Strengurinn er samhverfur. || Strengurinn er ekki samhverfur.
- */
+  if (isString(str) && !str =="") {
+    let message =
+    "Lengsta orðið er: " +
+    longest(str) +
+    "\n" +
+    "Stysta orðið er: " +
+    shortest(str) +
+    "\n" +
+    "Strengurinn snúinn við: " +
+    reverse(str) +
+    "\n" +
+    "Fjöldi sérhljóða í streng: " +
+    vowels(str) +
+    "\n" +
+    "Fjöldi samhljóða í streng: " +
+    consonant(str) +
+    "\n" +
+    "Strengurinn er " +
+    (palindrome(str) ? "" : "ekki ") +
+    "samhverfur.";
+
+    alert(message);
+
+    const again = confirm("Viltu reyna aftur?");
+    if (again) {
+      start();
+    } else {
+      const sure = confirm("Ertu viss?");
+      if (sure) {
+      } 
+      else {
+        start();
+      }
+    }
+
+  }else if (str.trim() === "") {
+    const again = confirm("Viltu reyna aftur?");
+    if (again) {
+      start();
+    } else {
+      const sure = confirm("Ertu viss?");
+      if (sure) {
+      } 
+      else {
+        start();
+      }
+    }
+  }
+
+  }
